@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid red; */
+}
+
+#wrapper {
+    width: 900px;
+    margin: 100px auto;
+    padding: 10px;
+    border: 3px solid teal;
+}
+
+#header {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+#header h1 {
+    flex: 12;
+}
+
+#header a {
+    flex: 1;
+    padding-top: 7px;
+}
+
+#content h3 {
+    text-align: center;
+}
+
+#book_title {
+    font-weight: bolder;
+}
+
+#desc_div {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+#desc {
+    margin-left: 9px;
+}

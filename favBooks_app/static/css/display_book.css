@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid red; */
+}
+
+#wrapper {
+    width: 900px;
+    margin: 100px auto;
+    padding: 10px;
+    border: 3px solid teal;
+}
+
+#header {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+#header h1 {
+    flex: 12;
+}
+
+#header a {
+    flex: 1;
+    padding-top: 7px;
+}
+
+#content {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+#display_book {
+    width: 50%;
+}
+
+#display_book p,
+#display_users h2,
+#display_users li {
+    margin-bottom: 10px;
+}
+
+#desc_div {
+    display: flex;
+}
+
+#display_users {
+    width: 50%;
+}
+
+#display_users li {
+    margin-left: 45px;
+}
+
+.users_that_like {
+    display: flex;
+}
+
+.users_that_like a {
+    margin-left: 10px;
+}
+
+#fav_but {
+    background-color: white;
+    border: none;
+    color: blue;
+    text-decoration: underline;
+}
+
+#go_to_favs {
+    margin-left: 621px;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Favorite Books</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/check_destroy.css' %}">
+</head>
+
+<body>
+    <div id="wrapper">
+        <h2>Are you sure you want to delete this book?</h2>
+        <p>Title: <span id="title_output">{{book_to_destroy.title}}</span></p>
+        <div id="desc_div">
+            <p>Description:</p>
+            <p id="desc_output">{{ book_to_destroy.desc}}</p>
+        </div>      <!--end desc_div-->
+        <div id="buttons">
+            <button id="no"><a href="/books/{{ book_to_destroy.id }}">No</a></button>
+            <form action="/books/destroy" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="book_id" value="{{ book_to_destroy.id }}">
+                <button id="destroy" type="submit">Yes! I want to delete this book.</button>
+            </form>
+        </div>      <!--end buttons-->
+    </div>      <!--end wrapper-->
+</body>
+
+</html>

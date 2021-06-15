@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Favorite Books</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/books_style.css' %}">
+    <!-- <link rel="stylesheet" href="../static/css/books_style.css" -->
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h1>Welcome, {{ logged_user.first_name }}</h1>
+            <a href="/logout">log out</a>
+        </div>      <!--end header-->
+        <div id="errors">
+                {% if messages %}
+                <ul>    
+                    {% for message in messages %}    
+                        <li>{{ message }}</li>    
+                    {% endfor %}
+                </ul>
+                {% endif %}
+        </div>      <!--end errors-->
+        <div id="content">
+            <div id="add_book_form">
+                <h2>Add a Favorite Book</h2>
+                <form action="/books/add_book" method="POST">
+                    {% csrf_token %}
+                    <p>Title: <input id="title_input" type="text" name="title"></p>
+                    <div id="desc_div">
+                        <p>Description:</p>
+                        <textarea id="desc_input" name="desc"></textarea>
+                    </div>      <!--end desc_div-->
+                    <button type="submit">Add</button>
+                </form>
+            </div>      <!--add_book_form-->
+            <div id="display_books">
+                <h2>All Books</h2>
+                {% for book in all_books %}
+                    <div class="book">
+                        <a href="/books/{{ book.id }}">{{ book.title }}</a>
+                        <p>(added by {{ book.uploaded_by.first_name }} {{ book.uploaded_by.last_name }})</p>
+                        <p>{{ book.desc }}</p>
+                        {% if book not in logged_user.fav_books.all %}
+                            <form action="/books/add_to_fav" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="book_id" value="{{ book.id }}">
+                                <button id="fav_but" type="submit">Add to Favorites</button>
+                            </form>
+                        {% else %}
+                            <p id="favs">this is one of your favorites</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>      <!--display_uploaded_books-->
+        </div>      <!--end content-->
+        <a href="/books/user_favorites" id="go_to_favs">Go to your favorites</a>
+    </div>      <!--end wrapper-->
+</body>
+
+</html>

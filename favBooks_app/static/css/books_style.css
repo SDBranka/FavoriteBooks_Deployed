@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid red; */
+}
+
+#wrapper {
+    width: 900px;
+    margin: 100px auto;
+    padding: 10px;
+    border: 3px solid teal;
+}
+
+#header {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+#header h1 {
+    flex: 12;
+}
+
+#header a {
+    flex: 1;
+    padding-top: 7px;
+}
+
+#errors {
+    text-align: center;
+    color: red;
+    margin-bottom: 15px;
+}
+
+#content {
+    display: flex;
+}
+
+#add_book_form {
+    width: 50%;
+}
+
+#add_book_form h2,
+#add_book_form p,
+#add_book_form textarea {
+    margin-bottom: 10px;
+}
+
+#title_input {
+    width: 70%;
+    margin-left: 52px;
+}
+
+#desc_div {
+    display: flex;
+}
+
+#desc_input {
+    width: 70%;
+    margin-left: 9px;
+}
+
+#add_book_form button {
+    padding: 3px;
+    border-radius: 5px;
+    margin-left: 90px;
+}
+
+#display_books {
+    width: 50%;
+}
+
+.book {
+    margin-bottom: 10px;
+}
+
+#favs {
+    font-style: italic;
+}
+
+#fav_but {
+    background-color: white;
+    border: none;
+    color: blue;
+    text-decoration: underline;
+}
+
+#go_to_favs {
+    margin-left: 729px;
+}

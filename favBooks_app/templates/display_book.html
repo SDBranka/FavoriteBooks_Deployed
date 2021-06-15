@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Favorite Books</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/display_book.css' %}">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h1>Welcome, {{ logged_user.first_name }}</h1>
+            <a href="/logout">log out</a>
+        </div>      <!--end header-->
+        <div id="content">
+            <div id="display_book">
+                    <p>{{ book.title }}</p>
+                    <p>Added by: {{book.uploaded_by.first_name }} {{book.uploaded_by.last_name }}</p>
+                    <p>Added on: {{ book.created_at }}</p>
+                    <p>Last updated on: {{ book.updated_at }}</p>
+                    <div id="desc_div">
+                        <p>Description:</p>
+                        <p id="desc">{{ book.desc }}</p>
+                    </div>      <!--end desc_div-->                
+            </div>      <!--end display_book-->
+            <div id="display_users">
+                <h2>Users Who Like This Book</h2>
+                <ul>
+                {% for user in book.favorited_by.all %}
+                    <div class="users_that_like">
+                        <li>{{ user.first_name }} {{ user.last_name }}</li>
+                        {% if user.id == logged_user.id %}
+                            <a href="/books/unfavorite/{{ book.id }}">Unfavorite</a>
+                        {% endif %}
+                    </div>      <!--end users_that_like-->
+                {% endfor %}
+                </ul>
+                {% if book not in logged_user.fav_books.all %}
+                    <form action="/books/add_to_fav" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="book_id" value="{{ book.id }}">
+                        <button id="fav_but" type="submit">Add to Favorites</button>
+                    </form>
+                {% endif %}
+            </div>      <!--end display_users-->
+        </div>      <!--end content-->
+        <a href="/books">Back to Main Page</a>
+        <a href="/books/user_favorites" id="go_to_favs">Go to your favorites</a>
+    </div>      <!--end wrapper-->
+</body>
+
+</html>

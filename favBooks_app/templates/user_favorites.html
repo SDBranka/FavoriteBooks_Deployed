@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Favorite Books</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/user_favorites.css' %}">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h1>Welcome, {{ logged_user.first_name }}</h1>
+            <a href="/logout">log out</a>
+        </div>      <!--end header-->
+        <div id="content">
+            <h3>Your Favorite Books</h3>
+            {% for book in logged_user.fav_books.all %}
+                <p id="book_title">{{ book.title }}</p>
+                <p>Uploaded: {{ book.created_at }}</p>
+                <p>Uploaded by: {{ book.uploaded_by.first_name }} {{ book.uploaded_by.last_name }}</p>
+                <div id="desc_div">
+                    <p>Description:</p>
+                    <p id="desc">{{ book.desc }}</p>
+                </div>      <!--end desc_div-->  
+            {% endfor %}
+        </div>      <!--end content-->
+        <a href="/books">Back to Main Page</a>
+    </div>      <!--end wrapper-->
+</body>
+
+</html>

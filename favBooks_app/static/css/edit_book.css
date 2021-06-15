@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid red; */
+}
+
+#wrapper {
+    width: 900px;
+    margin: 100px auto;
+    padding: 10px;
+    border: 3px solid teal;
+}
+
+#header {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+#header h1 {
+    flex: 12;
+}
+
+#header a {
+    flex: 1;
+    padding-top: 7px;
+}
+
+#errors {
+    text-align: center;
+    color: red;
+    margin-bottom: 15px;
+}
+
+#content {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+#edit_form {
+    width: 50%;
+}
+
+#title_input, 
+#edit_form p, 
+#desc_input,
+#display_users h2,
+#display_users li {
+    margin-bottom: 10px;
+}
+
+
+#title_input {
+    width: 95%;
+}
+
+#desc_div {
+    display: flex;
+}
+
+#desc_input {
+    width: 95%;
+}
+
+button {
+    padding: 3px;
+    border-radius: 5px;
+}
+
+#edit_but {
+    margin-left: 81px;
+}
+
+#dlt_but {
+    margin-left: 10px;
+    background-color: red;
+}
+
+#dlt_but a {
+    text-decoration: none;
+    color: white;
+}
+
+#display_users {
+    width: 50%;
+}
+
+#display_users li {
+    margin-left: 45px;
+}
+
+.users_that_like {
+    display: flex;
+}
+
+.users_that_like a {
+    margin-left: 10px;
+}
+
+#go_to_favs {
+    margin-left: 621px;
+}
